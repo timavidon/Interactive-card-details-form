@@ -1,0 +1,260 @@
+:root {
+  /* Colors */
+  --primary-clr-active-input: linear-gradient(
+    90deg,
+    hsl(249, 99%, 64%),
+    hsl(278, 94%, 30%)
+  );
+  --primary-clr1: hsl(249, 99%, 64%);
+  --primary-clr2: hsl(278, 94%, 30%);
+  --primary-clr-error-input: hsl(0, 100%, 66%);
+
+  --neutral-clr-100: hsl(0, 0%, 100%);
+  --neutral-clr-200: hsl(270, 3%, 87%);
+  --neutral-clr-600: hsl(279, 6%, 55%);
+  --neutral-clr-800: hsl(278, 68%, 11%);
+
+  /* Font families */
+  --ff-primary: "Space Grotesk", sans-serif;
+
+  /* Font sizes */
+  --fs-400: 1rem;
+  --fs-500: 1.125rem;
+  --fs-600: 1.925rem;
+
+  /* Font weights */
+  --fw-regular: 400;
+  --fw-medium: 500;
+}
+
+/* CSS Resets */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img,
+svg {
+  display: block;
+}
+
+input,
+button {
+  font: inherit;
+}
+
+/* Remove arrows/spinners in Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+/* Remove arrows/spinners in Firefox */
+input[type="number"] {
+  appearance: textfield;
+}
+
+/* Main style */
+body {
+  min-height: 100dvh;
+  line-height: 1.5;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-500);
+  font-weight: var(--fw-medium);
+}
+
+.container {
+  display: grid;
+}
+
+.card-previews {
+  position: relative;
+  height: 45vh;
+  background-image: url(./images/bg-main-mobile.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: min-content;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: var(--fs-400);
+  font-weight: var(--fw-regular);
+}
+
+.card-front > *:not(.card-front__bg),
+.card-back > *:not(.card-back__bg) {
+  position: absolute;
+  color: var(--neutral-clr-100);
+}
+
+.card-front {
+  --card-padding: 2rem;
+  top: 50.5%;
+  left: 1.8rem;
+  z-index: 1;
+}
+
+.card-back {
+  top: 2.5rem;
+  right: 1.5rem;
+}
+
+.card-front__logo {
+  top: var(--card-padding);
+  left: var(--card-padding);
+}
+
+.card-front__number {
+  font-size: var(--fs-600);
+  top: 50%;
+  left: var(--card-padding);
+}
+
+.card-front__name {
+  bottom: var(--card-padding);
+  left: var(--card-padding);
+}
+
+.card-front__expiry {
+  bottom: var(--card-padding);
+  right: var(--card-padding);
+}
+
+.card-back__cvc {
+  top: 44%;
+  right: 3.5rem;
+}
+
+.content {
+  height: 100vh;
+  width: 100vw;
+  padding: 7rem 2rem 0 2rem;
+}
+
+label {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--neutral-clr-900);
+  opacity: 0.75;
+}
+
+input {
+  padding: 1rem;
+  border: 1px solid var(--neutral-clr-200);
+  border-radius: 0.5rem;
+}
+
+input::placeholder {
+  color: var(--neutral-clr-200);
+}
+
+/* input:focus-visible {
+} */
+
+.button {
+  width: 100%;
+  padding: 1.2rem;
+  font-weight: var(--fw-regular);
+  border: none;
+  border-radius: 0.5rem;
+  color: var(--neutral-clr-100);
+  background-color: var(--neutral-clr-800);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.button:hover {
+  background: var(--primary-clr-active-input);
+}
+
+.error-msg {
+  visibility: hidden;
+  color: var(--primary-clr-error-input);
+}
+
+[aria-invalid="true"],
+[aria-invalid="true"]:focus-visible {
+  outline: 2px solid var(--primary-clr-error-input);
+}
+
+[aria-invalid="true"] ~ .error-msg {
+  visibility: hidden;
+}
+
+/* Thank you state */
+.thanks {
+  text-align: center;
+}
+
+.header {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.desc {
+  color: var(--neutral-clr-600);
+}
+
+.attribution {
+  text-align: center;
+  margin-block: 1rem;
+}
+
+.attribution a {
+  color: var(--primary-clr1);
+}
+
+/* Utilities */
+.block-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Desktop */
+@media (min-width: 50em) {
+  .container {
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .card-previews {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .card-front,
+  .card-back {
+    position: relative;
+    inset: revert;
+  }
+
+  .card-back {
+    margin-left: auto;
+  }
+}

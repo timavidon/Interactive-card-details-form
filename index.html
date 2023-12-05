@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Interactive card details form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <div class="card-previews">
+        <div class="card-front">
+          <img
+            class="card-front__bg"
+            src="./images/bg-card-front.png"
+            alt="card front image"
+          />
+
+          <svg
+            class="card-front__logo"
+            width="84"
+            height="47"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <ellipse cx="23.478" cy="23.5" rx="23.478" ry="23.5" fill="#fff" />
+            <path
+              d="M83.5 23.5c0 5.565-4.507 10.075-10.065 10.075-5.559 0-10.065-4.51-10.065-10.075 0-5.565 4.506-10.075 10.065-10.075 5.558 0 10.065 4.51 10.065 10.075Z"
+              stroke="#fff"
+            />
+          </svg>
+          <span class="card-front__number">0000 0000 0000 0000</span>
+          <span class="card-front__name">Jane Appleseed</span>
+          <span class="card-front__expiry">00/00</span>
+        </div>
+
+        <div class="card-back">
+          <img
+            class="card-back__bg"
+            src="./images/bg-card-back.png"
+            alt="card back image"
+          />
+          <div class="card-back__cvc">000</div>
+        </div>
+      </div>
+
+      <section class="content">
+        <form class="form" action="#">
+          <div class="block-group">
+            <label for="name">Cardholder Name</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="e.g. Jane Appleseed"
+              required
+              aria-errormessage="name-error"
+              aria-invalid="false"
+            />
+            <p class="error-msg" id="name-error">Can't be blank</p>
+          </div>
+
+          <div class="block-group">
+            <label for="number">Card Number</label>
+            <input
+              type="number"
+              name="number"
+              id="number"
+              placeholder="e.g. 1234 5678 9123 0000"
+              required
+              aria-errormessage="card-number-error"
+              aria-invalid="false"
+            />
+            <p class="error-msg" id="card-number-error">
+              Wrong format, numbers only
+            </p>
+          </div>
+
+          <div class="block-group">
+            <label for="expiry-date">Exp. Date (MM/YY)</label>
+            <div class="row-group">
+              <input
+                class="expiry-date"
+                type="number"
+                name="expiry-date"
+                id="month"
+                placeholder="MM"
+                required
+                aria-errormessage="expiry-date-error"
+                aria-invalid="false"
+              />
+              <input
+                class="expiry-date"
+                type="number"
+                name="expiry-date"
+                id="year"
+                placeholder="YY"
+                required
+                aria-errormessage="expiry-date-error"
+                aria-invalid="false"
+              />
+            </div>
+            <p class="error-msg" id="expiry-date-error">Can't be blank</p>
+          </div>
+
+          <div class="block-group">
+            <label for="cvc">CVC</label>
+            <input
+              type="number"
+              name="cvc"
+              id="cvc"
+              placeholder="e.g. 123"
+              required
+              aria-errormessage="cvc-error"
+              aria-invalid="false"
+            />
+            <p class="error-msg" id="cvc-error">Can't be blank</p>
+          </div>
+
+          <button class="button" type="submit">Confirm</button>
+        </form>
+        <!-- Completed state start -->
+        <div class="thanks hidden">
+          <svg
+            width="80"
+            height="80"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="40" cy="40" r="40" fill="url(#a)" />
+            <path d="M28 39.92 36.08 48l16-16" stroke="#fff" stroke-width="3" />
+            <defs>
+              <linearGradient
+                id="a"
+                x1="-23.014"
+                y1="11.507"
+                x2="0"
+                y2="91.507"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="#6348FE" />
+                <stop offset="1" stop-color="#610595" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <h1 class="header">Thank you!</h1>
+          <p class="desc">We've added your card details</p>
+          <button class="button" type="submit">Continue</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="attribution">
+      <small>
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by
+        <a href="https://github.com/timavidon" target="_blank">Tim Avidon</a>.
+      </small>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
